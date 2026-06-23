@@ -76,7 +76,8 @@ html {
     position: relative;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color);
 }
 
@@ -91,7 +92,8 @@ html {
     transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -233,6 +235,11 @@ html {
     text-align: center;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    opacity: 0;
+}
+
+.servico-card.animate-in {
+    animation: slideUp 0.6s ease forwards;
 }
 
 .servico-card:hover {
@@ -280,6 +287,11 @@ html {
     border-radius: 10px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.beneficio-item.animate-in {
+    animation: slideUp 0.6s ease forwards;
 }
 
 .beneficio-item:hover {
@@ -333,6 +345,11 @@ html {
     border-radius: 10px;
     border-left: 4px solid var(--primary-color);
     transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.depoimento-card.animate-in {
+    animation: slideUp 0.6s ease forwards;
 }
 
 .depoimento-card:hover {
@@ -425,10 +442,62 @@ html {
 .form-group.checkbox input {
     width: auto;
     margin: 0;
+    cursor: pointer;
 }
 
 .form-group.checkbox label {
     margin: 0;
+    cursor: pointer;
+}
+
+.char-counter {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* ========== MENSAGEM DE SUCESSO ========== */
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    z-index: 2000;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+}
+
+.success-message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.success-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+}
+
+.success-icon {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.success-message h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.success-message p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
 }
 
 /* ========== FOOTER ========== */
@@ -465,6 +534,10 @@ html {
     list-style: none;
 }
 
+.footer-section li {
+    margin-bottom: 8px;
+}
+
 .footer-section a {
     color: #ccc;
     text-decoration: none;
@@ -480,6 +553,27 @@ html {
     padding-top: 20px;
     border-top: 1px solid #444;
     color: #ccc;
+}
+
+/* ========== ANIMAÇÕES ========== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* ========== RESPONSIVO ========== */
@@ -498,6 +592,7 @@ html {
         background: white;
         padding: 20px;
         gap: 0;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
@@ -507,6 +602,11 @@ html {
     .nav-link {
         padding: 10px 0;
         display: block;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
     }
 
     .hero {
@@ -557,6 +657,12 @@ html {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+
+    .success-message {
+        right: 10px;
+        left: 10px;
+        width: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -572,6 +678,10 @@ html {
         font-size: 1.5rem;
     }
 
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
     .btn-large {
         padding: 12px 25px;
         font-size: 1rem;
@@ -585,5 +695,25 @@ html {
         width: 150px;
         height: 150px;
         font-size: 60px;
+    }
+
+    .form-contato {
+        padding: 20px;
+    }
+
+    .success-content {
+        padding: 15px 20px;
+    }
+
+    .success-icon {
+        font-size: 1.5rem;
+    }
+
+    .success-message h3 {
+        font-size: 1rem;
+    }
+
+    .success-message p {
+        font-size: 0.85rem;
     }
 }
