@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaskFlow - Aplicação para gerenciar suas tarefas do dia a dia">
+    <title>TaskFlow - Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="title-icon">✓</span>
+                    TaskFlow
+                </h1>
+                <p class="app-subtitle">Organize suas tarefas e aumente sua produtividade</p>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="input-section">
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="taskInput" 
+                            class="task-input" 
+                            placeholder="Adicione uma nova tarefa..."
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="btn-add">
+                            <span class="btn-icon">+</span>
+                            Adicionar
+                        </button>
+                    </div>
+                    <div class="form-options">
+                        <div class="priority-group">
+                            <label for="prioritySelect">Prioridade:</label>
+                            <select id="prioritySelect" class="priority-select">
+                                <option value="baixa">Baixa</option>
+                                <option value="média" selected>Média</option>
+                                <option value="alta">Alta</option>
+                            </select>
+                        </div>
+                        <div class="category-group">
+                            <label for="categorySelect">Categoria:</label>
+                            <select id="categorySelect" class="category-select">
+                                <option value="pessoal">Pessoal</option>
+                                <option value="trabalho">Trabalho</option>
+                                <option value="saúde">Saúde</option>
+                                <option value="educação">Educação</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todas">
+                        Todas
+                    </button>
+                    <button class="filter-btn" data-filter="ativas">
+                        Ativas
+                    </button>
+                    <button class="filter-btn" data-filter="concluídas">
+                        Concluídas
+                    </button>
+                </div>
+                <div class="sort-options">
+                    <select id="sortSelect" class="sort-select">
+                        <option value="data-desc">Mais recentes</option>
+                        <option value="data-asc">Mais antigas</option>
+                        <option value="prioridade">Por prioridade</option>
+                        <option value="categoria">Por categoria</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-value" id="totalTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Ativas</span>
+                    <span class="stat-value active" id="activeTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Concluídas</span>
+                    <span class="stat-value completed" id="completedTasks">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Taxa</span>
+                    <span class="stat-value percentage" id="completionRate">0%</span>
+                </div>
+            </div>
+
+            <div class="tasks-container">
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">📋</div>
+                    <h3>Nenhuma tarefa ainda</h3>
+                    <p>Adicione sua primeira tarefa acima para começar!</p>
+                </div>
+                <ul id="tasksList" class="tasks-list"></ul>
+            </div>
+
+            <div class="action-section">
+                <button id="clearCompleted" class="btn-secondary" title="Limpar tarefas concluídas">
+                    🗑️ Limpar Concluídas
+                </button>
+                <button id="clearAll" class="btn-danger" title="Deletar todas as tarefas">
+                    ⚠️ Limpar Tudo
+                </button>
+                <button id="exportBtn" class="btn-secondary" title="Exportar tarefas">
+                    📥 Exportar
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>TaskFlow © 2024 | Tarefas salvas automaticamente</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
